@@ -1,0 +1,54 @@
+{
+    "extends": "react-app",
+    "rules": {
+        "no-console": "warn",
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    // https://material-ui.com/styles/basics/#material-ui-core-styles-vs-material-ui-styles
+                    {
+                        "name": "@material-ui/styles",
+                        "message": "Please import from @material-ui/core or @material-ui/core/styles instead."
+                    },
+                    // Node only modules
+                    // https://eslint.org/docs/rules/no-restricted-imports#options
+                    // https://github.com/nodejs/node/tree/master/lib
+                    "assert",
+                    "buffer",
+                    "child_process",
+                    "cluster",
+                    "crypto",
+                    "dgram",
+                    "dns",
+                    "domain",
+                    "events",
+                    "freelist",
+                    "fs",
+                    "http",
+                    "https",
+                    "module",
+                    "net",
+                    "os",
+                    "path",
+                    "punycode",
+                    "querystring",
+                    "readline",
+                    "repl",
+                    "smalloc",
+                    "stream",
+                    "string_decoder",
+                    "sys",
+                    "timers",
+                    "tls",
+                    "tracing",
+                    "tty",
+                    "url",
+                    "util",
+                    "vm",
+                    "zlib"
+                ]
+            }
+        ]
+    }
+}
