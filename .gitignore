@@ -3,6 +3,8 @@
 node_modules
 /dist
 
+.vscode
+
 __snapshots__
 # local env files
 .env.local
