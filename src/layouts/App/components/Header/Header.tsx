@@ -48,7 +48,9 @@ export const Header: React.FC = () => {
     <React.Fragment>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <img src={titleImage} className={classes.logo} alt="title" />
+          <a href="/">
+            <img src={titleImage} className={classes.logo} alt="title" />
+          </a>
           <div className={classes.menuArea}>
             <Button color="secondary" className={classes.leftBtn}>
               News
