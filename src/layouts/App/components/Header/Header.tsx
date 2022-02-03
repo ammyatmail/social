@@ -8,6 +8,8 @@ import {
 import { Language } from "@material-ui/icons";
 import * as React from "react";
 import titleImage from "../../../App/assets/r3.svg";
+import { LanguageDialog } from "./components";
+import { languageData } from "./components/Language/languageData";
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     height: 75,
@@ -40,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const Header: React.FC = () => {
   const classes = useStyles();
-
+  const [languageDialog, setLanguageDialog] = React.useState<boolean>(false);
+  const [languageId, setLanguageId] = React.useState<number>(1);
   return (
     <React.Fragment>
       <AppBar position="fixed" className={classes.appBar}>
@@ -57,9 +60,16 @@ export const Header: React.FC = () => {
               Care
             </Button>
           </div>
-          <IconButton color="secondary" className={classes.languageBtn}>
+          <IconButton
+            color="secondary"
+            className={classes.languageBtn}
+            onClick={() => setLanguageDialog(true)}
+          >
             <Language />
-            ENGLISH (UK)
+            {
+              languageData.find((language) => language.id === languageId)
+                ?.display
+            }
           </IconButton>
           <Button
             color="secondary"
@@ -70,6 +80,18 @@ export const Header: React.FC = () => {
           </Button>
         </Toolbar>
       </AppBar>
+      <LanguageDialog
+        languageId={languageId}
+        setLanguageId={setLanguageId}
+        dialogProps={{
+          open: languageDialog,
+          onClose: (e) => {
+            setLanguageDialog(false);
+          },
+          fullWidth: true,
+          maxWidth: "sm",
+        }}
+      />
     </React.Fragment>
   );
 };

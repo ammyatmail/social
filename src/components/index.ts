@@ -5,3 +5,4 @@ export * from "./SortableTable";
 export * from "./DelayedLinearProgress";
 export * from "./EmptyView";
 export * from "./AppTabs";
+export * from "./FormDialog";
