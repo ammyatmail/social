@@ -1,9 +1,10 @@
 import { SvgIcon } from "@material-ui/core";
-import { AccountTree, Camera } from "@material-ui/icons";
+import { AccountTree } from "@material-ui/icons";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import * as React from "react";
 import { RouteProps } from "react-router-dom";
-import { Cameras, Dashboard, Zones } from "views";
+import { Dashboard } from "views";
+import { ProfileContainer } from "views/Profiles";
 
 interface SubPage {
   path: string;
@@ -31,16 +32,10 @@ export function getRoutes() {
       component: Dashboard,
     },
     {
-      path: "/zones",
-      headerTitle: "Zones",
+      path: "/profiles",
+      headerTitle: "Profiles",
       icon: AccountTree,
-      component: Zones,
-    },
-    {
-      path: "/cameras",
-      headerTitle: "Cameras",
-      icon: Camera,
-      component: Cameras,
+      component: ProfileContainer,
     }
   );
   return routes;
