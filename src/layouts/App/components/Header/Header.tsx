@@ -1,49 +1,73 @@
 import {
   AppBar,
-  Hidden,
-  IconButton,
+  makeStyles,
+  Button,
   Toolbar,
-  Typography,
+  IconButton,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Language } from "@material-ui/icons";
 import * as React from "react";
-import { AppRouteProps } from "../../routes";
-import { AccountButton } from "./components";
-import { useStyles } from "./styles";
-
-interface Props {
-  onToggleDrawer?: React.MouseEventHandler<HTMLElement>;
-  routes?: AppRouteProps[];
-}
-
-export const Header: React.FC<Props> = ({
-  onToggleDrawer,
-  children,
-  routes,
-}) => {
+import titleImage from "../../../App/assets/r3.svg";
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    height: 75,
+    padding: theme.spacing(0, 5),
+    justifyContent: "space-between",
+  },
+  logo: {
+    height: 40,
+  },
+  appBar: {
+    zIndex: 1,
+    backgroundColor: theme.palette.common.black,
+  },
+  menuArea: {
+    display: "flex",
+    flexGrow: 1,
+    paddingLeft: "inherit",
+  },
+  leftBtn: {
+    fontSize: 20,
+  },
+  loginBtn: {
+    fontSize: 15,
+    textTransform: "none",
+  },
+  languageBtn: {
+    fontSize: 15,
+    paddingRight: "inherit",
+  },
+}));
+export const Header: React.FC = () => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Hidden lgUp>
-            <IconButton
-              color="inherit"
-              className={classes.menuButton}
-              onClick={onToggleDrawer}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-
-          <div className={classes.title}>
-            <Typography variant="h6" color="inherit">
-              {children}
-            </Typography>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <img src={titleImage} className={classes.logo} alt="title" />
+          <div className={classes.menuArea}>
+            <Button color="secondary" className={classes.leftBtn}>
+              News
+            </Button>
+            <Button color="secondary" className={classes.leftBtn}>
+              About
+            </Button>
+            <Button color="secondary" className={classes.leftBtn}>
+              Care
+            </Button>
           </div>
-
-          <AccountButton color="inherit" />
+          <IconButton color="secondary" className={classes.languageBtn}>
+            <Language />
+            ENGLISH (UK)
+          </IconButton>
+          <Button
+            color="secondary"
+            variant="outlined"
+            className={classes.loginBtn}
+          >
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </React.Fragment>

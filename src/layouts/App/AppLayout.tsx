@@ -1,7 +1,7 @@
-import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Header, Sidebar } from "./components";
+import { Header } from "./components";
 import { getRoutes } from "./routes";
 
 interface Props {
@@ -11,6 +11,8 @@ interface Props {
 const useStyles = makeStyles((theme) => ({
   main: {
     height: "100%",
+    padding: theme.spacing(2),
+    background: theme.palette.common.black,
     color: theme.palette.text.primary,
     [theme.breakpoints.up("lg")]: {
       marginLeft: 0,
@@ -29,29 +31,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const AppLayout: React.FC<Props> = ({ componentError }) => {
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const {
-    breakpoints: { up },
-  } = useTheme();
-  const isLg = useMediaQuery(up("lg"));
-  const drawerWidth = useTheme().drawerWidth;
   const routes = getRoutes();
 
   return (
     <React.Fragment>
-      <Sidebar
-        open={drawerOpen}
-        openDrawer={openDrawer}
-        closeDrawer={closeDrawer}
-        routes={routes}
-      />
-
-      <main
-        className={classes.main}
-        style={{
-          marginLeft: !isLg ? 0 : drawerWidth,
-        }}
-      >
+      <Header />
+      <main className={classes.main}>
         {routes && (
           <Switch>
             {routes.map(
@@ -66,10 +51,6 @@ export const AppLayout: React.FC<Props> = ({ componentError }) => {
                   key={routeProps.path}
                   render={(componentProps) => (
                     <React.Fragment>
-                      <Header onToggleDrawer={toggleDrawer} routes={routes}>
-                        {headerTitle}
-                      </Header>
-
                       <div className={classes.content}>
                         {Component ? (
                           <Component {...componentProps} />
@@ -91,20 +72,4 @@ export const AppLayout: React.FC<Props> = ({ componentError }) => {
       </main>
     </React.Fragment>
   );
-
-  function toggleDrawer() {
-    setDrawerOpen((open) => !open);
-  }
-
-  function openDrawer() {
-    if (!drawerOpen) {
-      toggleDrawer();
-    }
-  }
-
-  function closeDrawer() {
-    if (drawerOpen) {
-      toggleDrawer();
-    }
-  }
 };

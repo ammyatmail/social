@@ -1,10 +1,10 @@
-import { Typography, Grid, makeStyles } from "@material-ui/core";
+import { Typography, Grid, makeStyles, Button } from "@material-ui/core";
 import * as React from "react";
-import BackgroundImage from "./../../layouts/App/assets/future.webp";
+import BackgroundImage from "./../../layouts/App/assets/dashboard.jpg";
 const useStyles = makeStyles((theme) => ({
   background: {
     backgroundImage: `url(${BackgroundImage})`,
-    height: "90vh",
+    height: "98vh",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -14,10 +14,12 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     padding: theme.spacing(10),
   },
-  title: {
-    padding: theme.spacing(2.5, 0),
+  subTitle: {
+    padding: theme.spacing(0.5, 0),
   },
-  subTitle: {},
+  title: {
+    padding: theme.spacing(10, 0),
+  },
 }));
 export const Dashboard: React.FC = () => {
   const classes = useStyles();
@@ -27,18 +29,26 @@ export const Dashboard: React.FC = () => {
       <div className={classes.background}>
         <Grid container className={classes.grid}>
           <Grid item xs={12} md={6} lg={6}>
-            <Typography variant="h5" className={classes.title}>
-              INNOVATE AT SCALE AND PACE
+            <Typography variant="h1" className={classes.title}>
+              <strong>GAY DATING</strong>
             </Typography>
-            <Typography variant="h3" className={classes.title}>
-              Future Proof Your Investment
+            <Typography variant="h3" className={classes.subTitle}>
+              that goes deeper
             </Typography>
-            <Typography variant="body1" className={classes.title}>
-              Eagle Eye Networks is changing the video surveillance industry
-              with the Eagle Eye Video API platform, a secure, open platform
-              that provides the flexibility and scalability to meet your
-              evolving needs, instantly.
+            <Typography variant="h5" className={classes.subTitle}>
+              From horny hook-ups, to the man of your dreams. Find guys in your
+              area and browse through detailed profiles. Use the search and
+              filters to zoom in to your perfect man. And it's Free!
             </Typography>
+            <Button
+              color="secondary"
+              style={{ fontSize: 30, textTransform: "none" }}
+              onClick={() => {
+                alert("sd");
+              }}
+            >
+              Explore
+            </Button>
           </Grid>
         </Grid>
       </div>

@@ -1,10 +1,10 @@
 import { CssBaseline } from "@material-ui/core";
 import { AppTheme } from "App.theme";
 import { ErrorContent, SnackbarContextProvider } from "./components";
-import { LayoutSwitcher } from "./LayoutSwitcher";
 import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStateProvider } from "App.state";
+import { AppLayout } from "layouts/App/AppLayout";
 
 interface Props {}
 
@@ -33,7 +33,7 @@ export default class App extends React.Component<Props, State> {
             <CssBaseline />
 
             <BrowserRouter>
-              <LayoutSwitcher />
+              <AppLayout />
             </BrowserRouter>
           </GlobalStateProvider>
         </SnackbarContextProvider>
