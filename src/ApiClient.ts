@@ -34,32 +34,6 @@ class APIClient {
     return camelcaseKeys(response.data, { deep: true });
   }
 
-  public async login<T>(
-    path: string,
-    data?: any,
-    config?: AxiosRequestConfig | undefined
-  ) {
-    const headers: any = {};
-    headers.Accept = "application/json";
-    headers["Access-Control-Allow-Origin"] = "*";
-    const auth = `${Config.API_KEY}:${Config.API_SECRET}`;
-    const encodedToken = await Buffer.from(auth).toString("base64");
-    headers["Authorization"] = "Basic " + encodedToken;
-    this.api.defaults.headers = headers;
-
-    const loginData = {
-      grant_type: "password",
-      scope: "write",
-      ...data,
-    };
-    // const bodyFormData = this.prepareData("POST", data);
-    const response = await this.api.post<T>(
-      `${Config.API_AUTH_BASE_URL}${path}${objectToUrlParams(loginData)}`
-    );
-    const res = this.getResponse(response);
-    return res;
-  }
-
   public async post<T>(
     path: string,
     data?: any,

@@ -34,6 +34,12 @@ export const ProfileContainer: React.FC = () => {
   const classes = useStyles();
   const [{ data: zones, loading, error: errorZone }] =
     useApiClient<Zone[]>("/zones");
+
+  const [{ data: dataProfiles, loading: profileLoading, error: errorProfile }] =
+    useApiClient<Zone[]>("/api");
+
+  console.log("data - ", dataProfiles);
+
   const snackbar = React.useContext(SnackbarContext);
 
   React.useEffect(() => {
