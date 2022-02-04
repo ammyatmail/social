@@ -1,5 +1,6 @@
 import { Typography, Grid, makeStyles, Button } from "@material-ui/core";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import BackgroundImage from "./../../layouts/App/assets/dashboard.jpg";
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0.5, 0),
   },
   title: {
-    padding: theme.spacing(10, 0),
+    padding: theme.spacing(10, 0, 2, 0),
   },
 }));
 export const Dashboard: React.FC = () => {
@@ -41,13 +42,12 @@ export const Dashboard: React.FC = () => {
               filters to zoom in to your perfect man. And it's Free!
             </Typography>
             <Button
+              component={Link}
+              to="/profiles"
               color="secondary"
               style={{ fontSize: 30, textTransform: "none" }}
-              onClick={() => {
-                alert("sd");
-              }}
             >
-              Explore
+              explore
             </Button>
           </Grid>
         </Grid>

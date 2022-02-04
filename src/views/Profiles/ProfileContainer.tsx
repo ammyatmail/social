@@ -1,15 +1,12 @@
 import {
   Typography,
   Button,
+  Grid,
   makeStyles,
   Paper,
   Toolbar,
 } from "@material-ui/core";
-import {
-  DelayedLinearProgress,
-  SnackbarContext,
-  SortableTable,
-} from "components";
+import { DelayedLinearProgress, SnackbarContext } from "components";
 import { SortableTableHeader } from "components/SortableTable/components";
 import { useApiClient } from "hooks";
 import * as React from "react";
@@ -63,19 +60,7 @@ export const ProfileContainer: React.FC = () => {
   ];
   return (
     <React.Fragment>
-      <Paper style={{ marginBottom: 16 }}>
-        {profileLoading && <DelayedLinearProgress />}
-        <Toolbar style={{ justifyContent: "space-between" }}>
-          <Typography variant="h6">Zones</Typography>
-          <Button color="primary">Add Zone</Button>
-        </Toolbar>
-        <SortableTable
-          columns={columns}
-          rows={[]}
-          emptyTableText="No zone available yet."
-          disablePagination
-        />
-      </Paper>
+      <Grid container></Grid>
     </React.Fragment>
   );
 };
