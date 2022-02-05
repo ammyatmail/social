@@ -17,18 +17,12 @@ import {
   PregnantWoman,
   VerifiedUser,
 } from "@material-ui/icons";
-import { parseName } from "lib";
+import { getOnlineStatusColor, getOnlineStatusText, parseName } from "lib";
 import { Profile } from "models/Profile";
 import * as React from "react";
 import errorImage from "../../layouts/App/assets/error.png";
-import { formatDistanceToNow, parseISO } from "date-fns";
 import { ProfileDetailsDialog } from "./ProfileDetailsDialog";
-
-export enum OnlineStatus {
-  ONLINE = "ONLINE",
-  OFFLINE = "OFFLINE",
-  DATE = "DATE",
-}
+import { OnlineStatus } from "lib/OnlineStatus";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -118,7 +112,8 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
               <FiberManualRecord
                 style={{
                   color: getOnlineStatusColor(
-                    profileItem.onlineStatus as OnlineStatus
+                    profileItem.onlineStatus as OnlineStatus,
+                    theme
                   ),
                 }}
               />
@@ -144,38 +139,9 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
             setShowDetails(false);
           },
           fullWidth: true,
-          maxWidth: "sm",
+          maxWidth: "md",
         }}
       />
     </React.Fragment>
   );
-
-  function getOnlineStatusColor(val: OnlineStatus) {
-    switch (val) {
-      case OnlineStatus.ONLINE:
-        return theme.palette.success.main.toString();
-      case OnlineStatus.OFFLINE:
-        return theme.palette.error.main.toString();
-      case OnlineStatus.DATE:
-        return theme.palette.warning.main.toString();
-      default:
-        return theme.palette.success.main.toString();
-    }
-  }
-
-  function getOnlineStatusText(val: OnlineStatus, lastDate: Date) {
-    const time = formatDistanceToNow(parseISO(lastDate.toString()), {
-      addSuffix: true,
-    });
-    switch (val) {
-      case OnlineStatus.ONLINE:
-        return "Online";
-      case OnlineStatus.OFFLINE:
-        return "Offline, last login time: " + time;
-      case OnlineStatus.DATE:
-        return "Away, last login time: " + time;
-      default:
-        return "Online";
-    }
-  }
 });

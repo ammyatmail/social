@@ -22,7 +22,7 @@ export const ProfileContainer: React.FC = () => {
   };
   const [{ data: dataProfiles, loading: profileLoading, error: errorProfile }] =
     useApiClient<MasterProfileList>(
-      "/api/search?length=" + pageNumber * perPageDataLength
+      `/api/search?length=${pageNumber * perPageDataLength}`
     );
 
   const totalPages = dataProfiles?.total
