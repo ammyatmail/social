@@ -165,7 +165,12 @@ export const ProfileDetailsDialog = React.memo<Props>(
                 <ListItemIcon>
                   <Person color="secondary" />
                 </ListItemIcon>
-                <ListItemText primary="Personal details" />
+                <ListItemText
+                  primaryTypographyProps={{
+                    color: "secondary",
+                  }}
+                  primary="Personal details"
+                />
               </ListItem>
               <Divider />
 
@@ -253,7 +258,12 @@ export const ProfileDetailsDialog = React.memo<Props>(
                 <ListItemIcon>
                   <Wc color="secondary" />
                 </ListItemIcon>
-                <ListItemText primary="Sexual details" />
+                <ListItemText
+                  primaryTypographyProps={{
+                    color: "secondary",
+                  }}
+                  primary="Sexual details"
+                />
               </ListItem>
               <Divider />
               <ListItem className={classes.listItem}>
@@ -286,7 +296,12 @@ export const ProfileDetailsDialog = React.memo<Props>(
                 <ListItemIcon>
                   <Room color="secondary" />
                 </ListItemIcon>
-                <ListItemText primary="Location details" />
+                <ListItemText
+                  primaryTypographyProps={{
+                    color: "secondary",
+                  }}
+                  primary="Location details"
+                />
               </ListItem>
               <Divider />
               <ListItem className={classes.listItem}>
