@@ -21,7 +21,7 @@ import {
   FiberManualRecord,
   VerifiedUser,
   Room,
-  Wc,
+  People,
 } from "@material-ui/icons";
 import { Profile } from "models/Profile";
 import * as React from "react";
@@ -257,7 +257,7 @@ export const ProfileDetailsDialog = React.memo<Props>(
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <Wc color="secondary" />
+                  <People color="secondary" />
                 </ListItemIcon>
                 <ListItemText
                   primaryTypographyProps={{
