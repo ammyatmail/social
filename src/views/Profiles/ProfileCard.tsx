@@ -9,7 +9,13 @@ import {
   makeStyles,
   useTheme,
 } from "@material-ui/core";
-import { FiberManualRecord, Info, VerifiedUser } from "@material-ui/icons";
+import {
+  AccessibilityNew,
+  FiberManualRecord,
+  Info,
+  PregnantWoman,
+  VerifiedUser,
+} from "@material-ui/icons";
 import { parseName } from "lib";
 import { Profile } from "models/Profile";
 import * as React from "react";
@@ -130,6 +136,16 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
               }}
             />
           </Tooltip>
+          {profileItem.isPlus && (
+            <Tooltip title="Plus size">
+              <PregnantWoman />
+            </Tooltip>
+          )}
+          {!profileItem.isPlus && (
+            <Tooltip title="Slim">
+              <AccessibilityNew />
+            </Tooltip>
+          )}
         </CardActions>
       </Card>
     </Grid>
