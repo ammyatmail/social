@@ -1,18 +1,32 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    height: 75,
+    padding: theme.spacing(0, 5),
+    justifyContent: "space-between",
+  },
+  logo: {
+    height: 40,
+  },
   appBar: {
-    color: theme.palette.text.primary,
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    transform: 'unset',
     zIndex: 1,
+    backgroundColor: theme.palette.common.black,
   },
-  title: {
+  menuArea: {
+    display: "flex",
     flexGrow: 1,
+    paddingLeft: "inherit",
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+  leftBtn: {
+    fontSize: 20,
+  },
+  loginBtn: {
+    fontSize: 15,
+    textTransform: "none",
+  },
+  languageBtn: {
+    fontSize: 15,
+    paddingRight: "inherit",
   },
 }));
