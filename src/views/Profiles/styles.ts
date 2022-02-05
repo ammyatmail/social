@@ -12,9 +12,6 @@ export const useStyles = makeStyles((theme) => ({
     padding: 0,
     marginTop: theme.spacing(1),
   },
-  removeIcon: {
-    color: theme.palette.danger.main,
-  },
   applicationsToolbar: {
     display: "flex",
     justifyContent: "space-between",
@@ -23,7 +20,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: "relative",
-    color: "#fff",
+    color: theme.palette.common.white,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -32,7 +29,6 @@ export const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     marginLeft: 0,
   },
-  checkbox: { paddingTop: theme.spacing(0) },
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: "100%",
