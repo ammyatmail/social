@@ -72,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     paddingRight: theme.spacing(2),
   },
+  gridContainer: {
+    display: "flex",
+    justifyContent: "space-evenly",
+  },
 }));
 
 interface Props {
@@ -106,10 +110,7 @@ export const ProfileDetailsDialog = React.memo<Props>(
         loading={loading}
         cancelText=""
       >
-        <Grid
-          container
-          style={{ display: "flex", justifyContent: "space-evenly" }}
-        >
+        <Grid container className={classes.gridContainer}>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Card className={classes.card} style={{ padding: 0, margin: 0 }}>
               <CardContent className={classes.cardContent}>

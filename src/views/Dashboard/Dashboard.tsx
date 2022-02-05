@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(10, 0, 2, 0),
   },
+  btn: {
+    fontSize: 30,
+    textTransform: "none",
+  },
 }));
 export const Dashboard: React.FC = () => {
   const classes = useStyles();
@@ -45,7 +49,7 @@ export const Dashboard: React.FC = () => {
               component={Link}
               to="/profiles"
               color="secondary"
-              style={{ fontSize: 30, textTransform: "none" }}
+              className={classes.btn}
             >
               explore
             </Button>

@@ -60,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
   infoNoPhoto: {
     padding: theme.spacing(0, 0, 0, 1),
   },
+  statusIcon: {
+    margin: theme.spacing(0, 1.2),
+  },
 }));
 
 interface Props {
@@ -116,12 +119,12 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
               )}
             >
               <FiberManualRecord
+                className={classes.statusIcon}
                 style={{
                   color: getOnlineStatusColor(
                     profileItem.onlineStatus as OnlineStatus,
                     theme
                   ),
-                  margin: "0 10",
                 }}
               />
             </Tooltip>
