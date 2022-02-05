@@ -35,11 +35,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
   },
-  pagination: {
-    display: "flex",
-    justifyContent: "center",
-    paddingTop: theme.spacing(2),
-  },
   cardContent: {
     padding: 0,
     margin: 0,
@@ -62,24 +57,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#fff",
     paddingLeft: 10,
-  },
-  grid: {
-    padding: theme.spacing(10),
-  },
-  media: {
-    height: 0,
-    paddingTop: "100%",
-  },
-  font: {
-    position: "absolute",
-    top: "80%",
-    color: "black",
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-  cutOut: {
-    textDecoration: "line-through",
   },
 }));
 

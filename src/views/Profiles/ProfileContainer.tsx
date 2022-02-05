@@ -7,39 +7,10 @@ import { Pagination } from "@material-ui/lab";
 import { ProfileCard } from "./ProfileCard";
 
 const useStyles = makeStyles((theme) => ({
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
   pagination: {
     display: "flex",
     justifyContent: "center",
     paddingTop: theme.spacing(2),
-  },
-  cardContent: {
-    padding: 0,
-    margin: 0,
-  },
-  title: {
-    position: "relative",
-    top: -40,
-    fontWeight: "bold",
-    color: "#fff",
-    paddingLeft: 10,
-  },
-  grid: {
-    padding: theme.spacing(10),
-  },
-  media: {
-    height: 0,
-    paddingTop: "100%",
-  },
-  font: {
-    position: "absolute",
-    top: "80%",
-    color: "black",
   },
 }));
 export const ProfileContainer: React.FC = () => {
