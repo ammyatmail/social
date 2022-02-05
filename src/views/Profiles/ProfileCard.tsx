@@ -32,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   cardContent: {
-    padding: 0,
-    margin: 0,
+    paddingBottom: 0,
   },
   titleArea: {
     position: "relative",
@@ -102,7 +101,7 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
               </div>
             )}
           </CardContent>
-          <CardActions disableSpacing>
+          <CardActions>
             <Tooltip
               title={getOnlineStatusText(
                 profileItem.onlineStatus as OnlineStatus,
@@ -115,6 +114,7 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
                     profileItem.onlineStatus as OnlineStatus,
                     theme
                   ),
+                  margin: "0 10",
                 }}
               />
             </Tooltip>
