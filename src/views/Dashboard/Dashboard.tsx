@@ -5,7 +5,7 @@ import BackgroundImage from "./../../layouts/App/assets/dashboard.jpg";
 const useStyles = makeStyles((theme) => ({
   background: {
     backgroundImage: `url(${BackgroundImage})`,
-    height: "98vh",
+    height: "87vh",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
