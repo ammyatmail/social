@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     paddingLeft: 10,
   },
+  cardMedia: {
+    borderRadius: 10,
+  },
 }));
 
 interface Props {
@@ -71,6 +74,7 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <CardMedia
+              className={classes.cardMedia}
               component="img"
               height="100%"
               image={profileItem.picture?.url ?? errorImage}

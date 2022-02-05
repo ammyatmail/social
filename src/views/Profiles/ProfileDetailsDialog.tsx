@@ -4,6 +4,7 @@ import {
   Grid,
   Tooltip,
   ListItemText,
+  CardContent,
   ListItemSecondaryAction,
   List,
   ListItem,
@@ -50,6 +51,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
   listItem: { paddingTop: 0, paddingBottom: 0 },
+  cardContent: {
+    paddingBottom: 0,
+  },
+  cardActions: {
+    marginLeft: theme.spacing(1.2),
+  },
+  cardMedia: {
+    borderRadius: 10,
+  },
 }));
 
 interface Props {
@@ -89,26 +99,30 @@ export const ProfileDetailsDialog = React.memo<Props>(
           style={{ display: "flex", justifyContent: "space-evenly" }}
         >
           <Grid item xs={12} sm={6} md={6} lg={6}>
-            <Card className={classes.card}>
-              <CardMedia
-                component="img"
-                height="100%"
-                image={profileItem.picture?.url ?? errorImage}
-                alt={profileItem.picture?.comment}
-              />
-              {profileItem.picture && (
-                <div className={classes.titleArea}>
-                  <div style={{ display: "flex" }}>
-                    <Tooltip title="Verified">
-                      <VerifiedUser
-                        color="primary"
-                        className={classes.verifiedIcon}
-                      />
-                    </Tooltip>
+            <Card className={classes.card} style={{ padding: 0, margin: 0 }}>
+              <CardContent className={classes.cardContent}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  component="img"
+                  height="100%"
+                  image={profileItem.picture?.url ?? errorImage}
+                  alt={profileItem.picture?.comment}
+                  style={{ padding: 0, margin: 0 }}
+                />
+                {profileItem.picture && (
+                  <div className={classes.titleArea}>
+                    <div style={{ display: "flex" }}>
+                      <Tooltip title="Verified">
+                        <VerifiedUser
+                          color="primary"
+                          className={classes.verifiedIcon}
+                        />
+                      </Tooltip>
+                    </div>
                   </div>
-                </div>
-              )}
-              <CardActions disableSpacing>
+                )}
+              </CardContent>
+              <CardActions className={classes.cardActions}>
                 <Tooltip
                   title={getOnlineStatusText(
                     profileItem.onlineStatus as OnlineStatus,
@@ -124,7 +138,7 @@ export const ProfileDetailsDialog = React.memo<Props>(
                     }}
                   />
                 </Tooltip>
-                <Typography>
+                <Typography variant="caption">
                   {getOnlineStatusText(
                     profileItem.onlineStatus as OnlineStatus,
                     profileItem.lastLogin
