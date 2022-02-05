@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
   const [languageId, setLanguageId] = React.useState<number>(1);
   return (
     <React.Fragment>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="sticky" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <a href="/">
             <img src={titleImage} className={classes.logo} alt="title" />
