@@ -59,6 +59,11 @@ export function getOnlineStatusColor(val: OnlineStatus, theme: Theme) {
   }
 }
 
+export function parseName(name: string) {
+  const val = name.match(/[A-Z][a-z]+|[0-9]+/g);
+  return val ?? [""];
+}
+
 export function getOnlineStatusText(val: OnlineStatus, lastDate: Date) {
   const time = formatDistanceToNow(parseISO(lastDate.toString()), {
     addSuffix: true,
