@@ -8,6 +8,7 @@ import {
   ListItemSecondaryAction,
   List,
   ListItem,
+  ListItemIcon,
   CardActions,
   CardMedia,
   makeStyles,
@@ -15,7 +16,13 @@ import {
   Divider,
   Typography,
 } from "@material-ui/core";
-import { FiberManualRecord, VerifiedUser } from "@material-ui/icons";
+import {
+  Person,
+  FiberManualRecord,
+  VerifiedUser,
+  Room,
+  Wc,
+} from "@material-ui/icons";
 import { Profile } from "models/Profile";
 import * as React from "react";
 import errorImage from "../../layouts/App/assets/error.png";
@@ -59,6 +66,10 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
     borderRadius: 10,
+  },
+  list: {
+    maxHeight: "450px",
+    overflow: "auto",
   },
 }));
 
@@ -149,125 +160,163 @@ export const ProfileDetailsDialog = React.memo<Props>(
           </Grid>
 
           <Grid item xs={12} sm={6} md={4} lg={4}>
-            <List dense>
+            <List dense className={classes.list}>
+              <ListItem>
+                <ListItemIcon>
+                  <Person color="secondary" />
+                </ListItemIcon>
+                <ListItemText primary="Personal details" />
+              </ListItem>
+              <Divider />
+
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Name" />
                 <ListItemSecondaryAction>
-                  {parseName(profileItem.name).join(" ")}
+                  <strong>{parseName(profileItem.name).join(" ")}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
-
-              <Divider />
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Age" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.personal.age}
+                  <strong>{profileDetails?.personal.age}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Body hair" />
                 <ListItemSecondaryAction>
-                  {capitalise(
-                    underscoredToWords(profileDetails?.personal.bodyHair ?? "")
-                  )}
+                  <strong>
+                    {capitalise(
+                      underscoredToWords(
+                        profileDetails?.personal.bodyHair ?? ""
+                      )
+                    )}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Body type" />
                 <ListItemSecondaryAction>
-                  {capitalise(
-                    underscoredToWords(profileDetails?.personal.bodyType ?? "")
-                  )}
+                  <strong>
+                    {capitalise(
+                      underscoredToWords(
+                        profileDetails?.personal.bodyType ?? ""
+                      )
+                    )}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Ethnicity" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.personal.ethnicity ?? "")}
+                  <strong>
+                    {capitalise(profileDetails?.personal.ethnicity ?? "")}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Relationship" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.personal.relationship ?? "")}
+                  <strong>
+                    {capitalise(profileDetails?.personal.relationship ?? "")}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Smoker" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.personal.smoker ?? "")}
+                  <strong>
+                    {capitalise(profileDetails?.personal.smoker ?? "")}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Body Shape" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.isPlus ? "Fat" : "Slim")}
+                  <strong>
+                    {capitalise(profileDetails?.isPlus ? "Fat" : "Slim")}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Height" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.personal.height.cm + " cm"}
+                  <strong> {profileDetails?.personal.height.cm + " cm"}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Weight" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.personal.weight.kg + " kg"}
+                  <strong> {profileDetails?.personal.weight.kg + " kg"}</strong>
                 </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <Wc color="secondary" />
+                </ListItemIcon>
+                <ListItemText primary="Sexual details" />
               </ListItem>
               <Divider />
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Anal sex position" />
                 <ListItemSecondaryAction>
-                  {capitalise(
-                    underscoredToWords(
-                      profileDetails?.sexual.analPosition ?? ""
-                    )
-                  )}
+                  <strong>
+                    {capitalise(
+                      underscoredToWords(
+                        profileDetails?.sexual.analPosition ?? ""
+                      )
+                    )}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Safer sex" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.sexual.saferSex ?? "")}
+                  <strong>
+                    {capitalise(profileDetails?.sexual.saferSex ?? "")}
+                  </strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="SM" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.sexual.sm ?? "")}
+                  <strong>{capitalise(profileDetails?.sexual.sm ?? "")}</strong>
                 </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <Room color="secondary" />
+                </ListItemIcon>
+                <ListItemText primary="Location details" />
               </ListItem>
               <Divider />
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Area" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.location.area}
+                  <strong>{profileDetails?.location.area}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="City" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.location.city}
+                  <strong> {profileDetails?.location.city}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Country" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.location.country}
+                  <strong> {profileDetails?.location.country}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Distance" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.location.distance + " km"}
+                  <strong> {profileDetails?.location.distance + " km"}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Location Name" />
                 <ListItemSecondaryAction>
-                  {profileDetails?.location.name}
+                  <strong> {profileDetails?.location.name}</strong>
                 </ListItemSecondaryAction>
               </ListItem>
             </List>
