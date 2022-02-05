@@ -4,6 +4,7 @@ import {
   Grid,
   Tooltip,
   Typography,
+  IconButton,
   CardActions,
   CardMedia,
   makeStyles,
@@ -21,8 +22,9 @@ import { Profile } from "models/Profile";
 import * as React from "react";
 import errorImage from "../../layouts/App/assets/error.png";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import { ProfileDetailsDialog } from "./ProfileDetailsDialog";
 
-enum OnlineStatus {
+export enum OnlineStatus {
   ONLINE = "ONLINE",
   OFFLINE = "OFFLINE",
   DATE = "DATE",
@@ -46,9 +48,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     justifyContent: "space-between",
   },
-  infoIcon: {
-    marginRight: theme.spacing(1),
+  infoButton: {
     color: "#fff",
+    margin: theme.spacing(0, 1, 0, 0),
+    padding: 0,
   },
   verifiedIcon: {
     marginLeft: theme.spacing(1),
@@ -67,65 +70,84 @@ interface Props {
 export const ProfileCard = React.memo<Props>(({ profileItem }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const [showDetails, setShowDetails] = React.useState<boolean>(false);
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <CardMedia
-            component="img"
-            height="100%"
-            image={profileItem.picture?.url ?? errorImage}
-            alt={profileItem.picture?.comment}
-          />
-          {profileItem.picture && (
-            <div className={classes.titleArea}>
-              <div style={{ display: "flex" }}>
-                <Typography variant="h5" className={classes.title}>
-                  {parseName(profileItem.name)[0] ?? ""}
-                </Typography>
-                <Tooltip title="Verified">
-                  <VerifiedUser
-                    color="primary"
-                    className={classes.verifiedIcon}
-                  />
+    <React.Fragment>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <CardMedia
+              component="img"
+              height="100%"
+              image={profileItem.picture?.url ?? errorImage}
+              alt={profileItem.picture?.comment}
+            />
+            {profileItem.picture && (
+              <div className={classes.titleArea}>
+                <div style={{ display: "flex" }}>
+                  <Typography variant="h5" className={classes.title}>
+                    {parseName(profileItem.name)[0] ?? ""}
+                  </Typography>
+                  <Tooltip title="Verified">
+                    <VerifiedUser
+                      color="primary"
+                      className={classes.verifiedIcon}
+                    />
+                  </Tooltip>
+                </div>
+
+                <Tooltip title="Details">
+                  <IconButton
+                    className={classes.infoButton}
+                    onClick={() => setShowDetails(true)}
+                  >
+                    <Info />
+                  </IconButton>
                 </Tooltip>
               </div>
-
-              <Tooltip title="Details">
-                <Info className={classes.infoIcon} />
-              </Tooltip>
-            </div>
-          )}
-        </CardContent>
-        <CardActions disableSpacing>
-          <Tooltip
-            title={getOnlineStatusText(
-              profileItem.onlineStatus as OnlineStatus,
-              profileItem.lastLogin
             )}
-          >
-            <FiberManualRecord
-              style={{
-                color: getOnlineStatusColor(
-                  profileItem.onlineStatus as OnlineStatus
-                ),
-              }}
-            />
-          </Tooltip>
-          {profileItem.isPlus && (
-            <Tooltip title="Plus size">
-              <PregnantWoman />
+          </CardContent>
+          <CardActions disableSpacing>
+            <Tooltip
+              title={getOnlineStatusText(
+                profileItem.onlineStatus as OnlineStatus,
+                profileItem.lastLogin
+              )}
+            >
+              <FiberManualRecord
+                style={{
+                  color: getOnlineStatusColor(
+                    profileItem.onlineStatus as OnlineStatus
+                  ),
+                }}
+              />
             </Tooltip>
-          )}
-          {!profileItem.isPlus && (
-            <Tooltip title="Slim">
-              <AccessibilityNew />
-            </Tooltip>
-          )}
-        </CardActions>
-      </Card>
-    </Grid>
+            {profileItem.isPlus && (
+              <Tooltip title="Plus size">
+                <PregnantWoman />
+              </Tooltip>
+            )}
+            {!profileItem.isPlus && (
+              <Tooltip title="Slim">
+                <AccessibilityNew />
+              </Tooltip>
+            )}
+          </CardActions>
+        </Card>
+      </Grid>
+      <ProfileDetailsDialog
+        profileItem={profileItem}
+        dialogProps={{
+          open: showDetails,
+          onClose: (e) => {
+            setShowDetails(false);
+          },
+          fullWidth: true,
+          maxWidth: "sm",
+        }}
+      />
+    </React.Fragment>
   );
 
   function getOnlineStatusColor(val: OnlineStatus) {
