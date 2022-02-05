@@ -68,8 +68,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
   },
   list: {
-    maxHeight: "450px",
+    maxHeight: "480px",
     overflow: "auto",
+    paddingRight: theme.spacing(2),
   },
 }));
 
