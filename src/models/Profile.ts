@@ -5,6 +5,6 @@ export interface Profile {
   name: string;
   onlineStatus: string;
   isPlus: boolean;
-  lastLogin: Date;
+  lastLogin: string;
   picture?: ProfileImage;
 }

@@ -64,7 +64,7 @@ export function parseName(name: string) {
   return val ?? [""];
 }
 
-export function getOnlineStatusText(val: OnlineStatus, lastDate: Date) {
+export function getOnlineStatusText(val: OnlineStatus, lastDate: string) {
   const time = formatDistanceToNow(parseISO(lastDate.toString()), {
     addSuffix: true,
   });
