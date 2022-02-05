@@ -19,12 +19,6 @@ import { ProfileCard } from "./ProfileCard";
 import { Close, FilterList, Search } from "@material-ui/icons";
 import { useStyles } from "./styles";
 
-enum AgeFilter {
-  ALL = "All",
-  Age_20_30 = "20 - 30 Years",
-  Age_30_40 = "31 - 40 Years",
-  Age_41 = "41 and above Years",
-}
 interface Filter {
   single: boolean;
   smoke: boolean;
