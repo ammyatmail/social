@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   infoButton: {
-    color: "#fff",
+    color: theme.palette.common.white,
     margin: theme.spacing(0, 1, 0, 0),
     padding: 0,
   },
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontWeight: "bold",
-    color: "#fff",
+    color: theme.palette.common.white,
     paddingLeft: 10,
   },
   cardMedia: {
