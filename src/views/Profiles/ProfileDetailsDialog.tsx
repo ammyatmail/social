@@ -153,13 +153,17 @@ export const ProfileDetailsDialog = React.memo<Props>(
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Body hair" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.personal.bodyHair ?? "")}
+                  {capitalise(
+                    underscoredToWords(profileDetails?.personal.bodyHair ?? "")
+                  )}
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Body type" />
                 <ListItemSecondaryAction>
-                  {capitalise(profileDetails?.personal.bodyType ?? "")}
+                  {capitalise(
+                    underscoredToWords(profileDetails?.personal.bodyType ?? "")
+                  )}
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem className={classes.listItem}>
