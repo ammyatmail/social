@@ -120,7 +120,6 @@ export const ProfileDetailsDialog = React.memo<Props>(
                   height="100%"
                   image={profileItem.picture?.url ?? errorImage}
                   alt={profileItem.picture?.comment}
-                  style={{ padding: 0, margin: 0 }}
                 />
                 {profileItem.picture && (
                   <div className={classes.titleArea}>
