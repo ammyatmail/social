@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     borderRadius: 10,
   },
+  infoNoPhoto: {
+    padding: theme.spacing(0, 0, 0, 1),
+  },
 }));
 
 interface Props {
@@ -130,6 +133,16 @@ export const ProfileCard = React.memo<Props>(({ profileItem }) => {
             {!profileItem.isPlus && (
               <Tooltip title="Slim">
                 <AccessibilityNew />
+              </Tooltip>
+            )}
+            {!profileItem.picture && (
+              <Tooltip title="Details">
+                <IconButton
+                  className={classes.infoNoPhoto}
+                  onClick={() => setShowDetails(true)}
+                >
+                  <Info />
+                </IconButton>
               </Tooltip>
             )}
           </CardActions>
