@@ -1,6 +1,7 @@
 import { AppBar, Button, Toolbar, IconButton } from "@material-ui/core";
 import { Language } from "@material-ui/icons";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import titleImage from "../../../App/assets/r3.svg";
 import { LanguageDialog } from "./components";
 import { languageData } from "./components/Language/languageData";
@@ -18,7 +19,12 @@ export const Header: React.FC = () => {
             <img src={titleImage} className={classes.logo} alt="title" />
           </a>
           <div className={classes.menuArea}>
-            <Button color="secondary" className={classes.leftBtn}>
+            <Button
+              color="secondary"
+              component={Link}
+              to="/news"
+              className={classes.leftBtn}
+            >
               News
             </Button>
             <Button color="secondary" className={classes.leftBtn}>

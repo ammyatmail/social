@@ -4,6 +4,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import * as React from "react";
 import { RouteProps } from "react-router-dom";
 import { Dashboard } from "views";
+import { News } from "views/Dashboard/components";
 import { ProfileContainer } from "views/Profiles";
 
 interface SubPage {
@@ -36,6 +37,12 @@ export function getRoutes() {
       headerTitle: "Profiles",
       icon: AccountTree,
       component: ProfileContainer,
+    },
+    {
+      path: "/news",
+      headerTitle: "News",
+      icon: AccountTree,
+      component: News,
     }
   );
   return routes;
